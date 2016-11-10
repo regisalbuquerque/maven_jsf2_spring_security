@@ -8,8 +8,14 @@
     </h:head>
     <h:body>
         <h:form>
+            <h:outputText value="Logado: #{loggedBean.user}" />
             <p:calendar mode="inline" />
         </h:form>
+        
+        <form action="${request.contextPath}/appLogout" method="POST">
+          <input type="submit" value="Logout"/>
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>		
+        </form>
     </h:body>
 </html>
 
