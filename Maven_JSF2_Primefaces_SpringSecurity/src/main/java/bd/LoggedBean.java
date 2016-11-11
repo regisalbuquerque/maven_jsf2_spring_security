@@ -1,6 +1,7 @@
 package bd;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -8,9 +9,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @RequestScoped
 public class LoggedBean {
     
+    @Inject
+    ServiceEJB service;
+    
     public String getUser()
     {
-        return SecurityContextHolder.getContext().getAuthentication().getName();
+        return service.nomeCampo() + SecurityContextHolder.getContext().getAuthentication().getName();
     }
     
 }
